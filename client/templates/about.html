@@ -1,0 +1,28 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+<center>
+<h1>Member</h1>
+<p class="font-italic text-muted">Srinakharinwirot University</p>
+</center>
+
+
+<div class="row">
+  {% for i in range(student|length) %}
+  <div class="col-sm-4">
+  <div class="card">
+    <img src="{{student[i].img}}">
+    <div class="card-body">
+      <p class="card-text" style="text-align: center;">
+        {{student[i].name}} {{student[i].student_id}}</p>
+    </div>
+</div>
+ </div>
+
+    {% endfor %}
+ 
+</div>
+
+
+
+{% endblock %}

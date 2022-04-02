@@ -1,0 +1,156 @@
+[
+  {
+    "Name": "apple",
+    "Calories": 89,
+    "TotalFat": 0.3,
+    "Sodium": 1,
+    "TotalCarb": 23,
+    "Protein": 1.1,
+    "Calcium": 6.00,
+    "Iron": 0.12,
+    "Potassium": 107
+  },
+  {
+    "Name": "banana",
+    "Calories": 89,
+    "TotalFat": 0.3,
+    "Sodium": 1,
+    "TotalCarb": 23,
+    "Protein": 1.1,
+    "Calcium": 5.00,
+    "Iron": 0.26,
+    "Potassium": 358
+  },
+  {
+    "Name": "blueburry",
+    "Calories": 57,
+    "TotalFat": 0.3,
+    "Sodium": 1,
+    "TotalCarb": 14,
+    "Protein": 0.7,
+    "Calcium": 6.00,
+    "Iron": 0.28,
+    "Potassium": 77
+  },
+  {
+    "Name": "cherry",
+    "Calories": 63,
+    "TotalFat": 0.2,
+    "Sodium": 1,
+    "TotalCarb": 16,
+    "Protein": 1.1,
+    "Calcium": 13.00,
+    "Iron": 0.36,
+    "Potassium": 222
+  },
+  {
+    "Name": "corn",
+    "Calories": 86,
+    "TotalFat": 1.4,
+    "Sodium": 15,
+    "TotalCarb": 19,
+    "Protein": 3.3,
+    "Calcium": 2.00,
+    "Iron": 0.52,
+    "Potassium": 270
+  },
+  {
+    "Name": "kiwi",
+    "Calories": 58,
+    "TotalFat": 0.4,
+    "Sodium": 5,
+    "TotalCarb": 14,
+    "Protein": 1.1,
+    "Calcium": 35.00,
+    "Iron": 0.24,
+    "Potassium": 198
+  },
+  {
+    "Name": "lemon",
+    "Calories": 29,
+    "TotalFat": 0.3,
+    "Sodium": 2,
+    "TotalCarb": 9.3,
+    "Protein": 1.1,
+    "Calcium": 26.00,
+    "Iron": 0.6,
+    "Potassium": 138
+  },
+  {
+    "Name": "lychee",
+    "Calories": 66,
+    "TotalFat": 0.4,
+    "Sodium": 1,
+    "TotalCarb": 17,
+    "Protein": 0.8,
+    "Calcium": 5.00,
+    "Iron": 0.31,
+    "Potassium": 171
+  },
+  {
+    "Name": "mango",
+    "Calories": 60,
+    "TotalFat": 0.4,
+    "Sodium": 1,
+    "TotalCarb": 15,
+    "Protein": 0.8,
+    "Calcium": 11.00,
+    "Iron": 0.16,
+    "Potassium": 168
+  },
+  {
+    "Name": "orange",
+    "Calories": 47,
+    "TotalFat": 0.1,
+    "Sodium": 1,
+    "TotalCarb": 12,
+    "Protein": 0.9,
+    "Calcium": 40.00,
+    "Iron": 0.10,
+    "Potassium": 181
+  },
+  {
+    "Name": "pineapple",
+    "Calories": 50,
+    "TotalFat": 0.1,
+    "Sodium": 1,
+    "TotalCarb": 13,
+    "Protein": 0.5,
+    "Calcium": 13.00,
+    "Iron": 0.29,
+    "Potassium": 109
+  },
+  {
+    "Name": "potato",
+    "Calories": 58,
+    "TotalFat": 0.1,
+    "Sodium": 1,
+    "TotalCarb": 12,
+    "Protein": 2.6,
+    "Calcium": 30.00,
+    "Iron": 3.24,
+    "Potassium": 413
+  },
+  {
+    "Name": "strawberry",
+    "Calories": 32,
+    "TotalFat": 0.3,
+    "Sodium": 1,
+    "TotalCarb": 7.7,
+    "Protein": 0.7,
+    "Calcium": 16.00,
+    "Iron": 0.41,
+    "Potassium": 153
+  },
+  {
+    "Name": "tomato",
+    "Calories": 18,
+    "TotalFat": 0.2,
+    "Sodium": 5,
+    "TotalCarb": 3.9,
+    "Protein": 0.9,
+    "Calcium": 10.00,
+    "Iron": 0.27,
+    "Potassium": 237
+  }
+]

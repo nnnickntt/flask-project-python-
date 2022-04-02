@@ -1,0 +1,68 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-5 col-md-6">     
+        <h1>Prediction</h1>
+        <p>Fruit : {{ pred_result['predictions'][0]['label'] }}</p>
+        <p>Confidence : {{ pred_result['predictions'][0]['confidence'] }}</p>   
+        <p>JSON : {{pred_result}}</p>
+    </div>
+    <div class="col-sm-5 offset-sm-2 col-md-3 offset-md-1">
+        <table class="table" id="myTable">
+            <thead class="thead-dark">
+            <tr style="text-align: center;">
+            </tr>
+            </thead>
+            <tbody>
+            {% for data_fruit in data %}
+                {% if pred_result['predictions'][0]['label'].lower() == data_fruit.Name.lower() %}
+                    <tr>
+                        <td><b>Name</b></td>
+                        <td>{{pred_result['predictions'][0]['label']}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Calories</b></td>
+                        <td>{{data_fruit.Calories}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Total Fat</b></td>
+                        <td>{{data_fruit.TotalFat}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Sodium</b></td>
+                        <td>{{data_fruit.Sodium}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Total Carbohydrate</b></td>
+                        <td>{{data_fruit.TotalCarb}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Protein</b></td>
+                        <td>{{data_fruit.Protein}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Calcium</b></td>
+                        <td>{{data_fruit.Calcium}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Iron</b></td>
+                        <td>{{data_fruit.Iron}}</td>      
+                    </tr>
+                    <tr>
+                        <td><b>Potassium</b></td>
+                        <td>{{ data_fruit.Potassium }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center mt-3">
+        <a href="/fruitml" class="btn btn-warning col-1">Reset</a>
+    </div>
+</div>
+
+
+{% endblock %}

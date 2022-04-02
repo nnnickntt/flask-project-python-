@@ -1,0 +1,253 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+<div>
+  <input style="width: 152px;" class="form-control float-start" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Name">
+  <button id="btn-add" class="btn-add btn btn-primary float-end">Add Data</button>
+</div>
+
+<div class="modal fade" tabindex="-1" id="modal-add">
+  <form action="http://127.0.0.1:5000/fruit/add" method="POST">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="text-align: left;">
+        <div class="mb-3 ">
+          <label for="addname" class="form-label">Name (lowercase)</label>
+          <input type="text" pattern="[a-z]+" class="form-control" name="addname" id="addname" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+          <label for="addcal" class="form-label">Calories</label>
+          <input type="number" step="any" class="form-control" name="addcal" id="addcal" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+          <label for="addfat" class="form-label">Total Fat (g)</label>
+          <input type="number" step="any" class="form-control" name="addfat" id="addfat" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+          <label for="addsodium" class="form-label">Sodium (mg)</label>
+          <input type="number" step="any" class="form-control" name="addsodium" id="addsodium" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+          <label for="addcarb" class="form-label">Total Carbohydrate (g)</label>
+          <input type="number" step="any" class="form-control" name="addcarb" id="addcarb" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+          <label for="addprotein" class="form-label">Protein (g)</label>
+          <input type="number" step="any" class="form-control" name="addprotein" id="addprotein" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+          <label for="addcalcium" class="form-label">Calcium (mg)</label>
+          <input type="number" step="any" class="form-control" name="addcalcium" id="addcalcium" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+          <label for="addiron" class="form-label">Iron (mg)</label>
+          <input type="number" step="any" class="form-control" name="addiron" id="addiron" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+          <label for="addpotassium" class="form-label">Potassium (mg)</label>
+          <input type="number" step="any" class="form-control" name="addpotassium" id="addpotassium" autocomplete="off" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
+
+<table class="table" id="myTable">
+    <thead class="thead-dark">
+      <tr style="text-align: center;">
+        <th scope="col">Name</th>
+        <th scope="col">Calories</th>
+        <th scope="col">Total Fat (g)</th>
+        <th scope="col">Sodium (mg)</th>
+        <th scope="col">Total Carbohydrate (g)</th>
+        <th scope="col">Protein (g)</th>
+        <th scope="col">Calcium (mg)</th>
+        <th scope="col">Iron (mg)</th>
+        <th scope="col">Potassium (mg)</th>
+        <th scope="col">Function (mg)</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for data_fruit in data_list %}
+        <tr style="text-align: center;">
+            <td>{{data_fruit.Name}}</td>
+            <td>{{data_fruit.Calories}}</td>
+            <td>{{data_fruit.TotalFat}}</td>
+            <td>{{data_fruit.Sodium}}</td>
+            <td>{{data_fruit.TotalCarb}}</td>
+            <td>{{data_fruit.Protein}}</td>
+            <td>{{data_fruit.Calcium}}</td>
+            <td>{{data_fruit.Iron}}</td>      
+            <td>{{data_fruit.Potassium}}</td>
+            <td>
+              <button id="btn-edit" class="btn-edit btn btn-warning" data-name="{{data_fruit.Name}}" data-cal="{{data_fruit.Calories}}" data-fat="{{data_fruit.TotalFat}}"
+              data-sodium="{{data_fruit.Sodium}}" data-carb="{{data_fruit.TotalCarb}}" data-protein="{{data_fruit.Protein}}" data-calcium="{{data_fruit.Calcium}}" data-iron="{{data_fruit.Iron}}" data-potassium="{{data_fruit.Potassium}}">Edit</button>
+            <button id="btn-delete" class="btn-delete btn btn-danger" data-name="{{data_fruit.Name}}">Delete</button></td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+
+  <div class="modal fade" tabindex="-1" id="modal-edit">
+    <form action="http://127.0.0.1:5000/fruit/put" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="text-align: left;">
+          <div class="mb-3 ">
+            <label for="editname" class="form-label">Name (lowercase)</label>
+            <input type="text" pattern="[a-z]+" class="form-control" name="editname" id="editname" autocomplete="off" required>
+          </div>
+          <div class="mb-3">
+            <label for="editcal" class="form-label">Calories</label>
+            <input type="number" step="any" class="form-control" name="editcal" id="editcal" autocomplete="off" required>
+          </div>
+          <div class="mb-3">
+            <label for="editfat" class="form-label">Total Fat (g)</label>
+            <input type="number" step="any" class="form-control" name="editfat" id="editfat" autocomplete="off" required>
+          </div>
+          <div class="mb-3">
+            <label for="editsodium" class="form-label">Sodium (mg)</label>
+            <input type="number" step="any" class="form-control" name="editsodium" id="editsodium" autocomplete="off" required>
+          </div>
+          <div class="mb-3">
+            <label for="editcarb" class="form-label">Total Carbohydrate (g)</label>
+            <input type="number" step="any" class="form-control" name="editcarb" id="editcarb" autocomplete="off" required>
+          </div>
+          <div class="mb-3">
+            <label for="editprotein" class="form-label">Protein (g)</label>
+            <input type="number" step="any" class="form-control" name="editprotein" id="editprotein" autocomplete="off" required>
+          </div>
+          <div class="mb-3">
+            <label for="editcalcium" class="form-label">Calcium (mg)</label>
+            <input type="number" step="any" class="form-control" name="editcalcium" id="editcalcium" autocomplete="off" required>
+          </div>
+          <div class="mb-3">
+            <label for="editiron" class="form-label">Iron (mg)</label>
+            <input type="number" step="any" class="form-control" name="editiron" id="editiron" autocomplete="off" required>
+          </div>
+          <div class="mb-3">
+            <label for="editpotassium" class="form-label">Potassium (mg)</label>
+            <input type="number" step="any" class="form-control" name="editpotassium" id="editpotassium" autocomplete="off" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  </div>
+
+  <div id="modal-delete" class="modal fade" tabindex="-1">
+    <form action="http://127.0.0.1:5000/fruit/delete" method="POST">
+      <input type="hidden" name="deletename" id="deletename">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  </div>
+
+
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+var myModal = new bootstrap.Modal(document.getElementById('modal-edit'), {
+  keyboard: false
+})
+
+$(".btn-edit").click(function(event) {
+        var name = $(this).data('name');
+        var cal = $(this).data('cal');
+        var fat = $(this).data('fat');
+        var sodium = $(this).data('sodium');
+        var carb = $(this).data('carb');
+        var protein = $(this).data('protein');
+        var calcium = $(this).data('calcium');
+        var iron = $(this).data('iron');
+        var potassium = $(this).data('potassium');
+
+        $('#editname').val(name);
+        $('#editcal').val(cal);
+        $('#editfat').val(fat);
+        $('#editsodium').val(sodium);
+        $('#editcarb').val(carb);
+        $('#editprotein').val(protein);
+        $('#editcalcium').val(calcium);
+        $('#editiron').val(iron);
+        $('#editpotassium').val(potassium);
+
+        myModal.show()
+});
+
+var myModalDelete = new bootstrap.Modal(document.getElementById('modal-delete'), {
+  keyboard: false
+})
+
+$(".btn-delete").click(function(event) {
+        var name = $(this).data('name');
+
+        $('#deletename').val(name);
+
+        myModalDelete.show()
+});
+
+var myModalAdd = new bootstrap.Modal(document.getElementById('modal-add'), {
+  keyboard: false
+})
+
+$(".btn-add").click(function(event) {
+        myModalAdd.show()
+});
+</script>
+{% endblock %}
